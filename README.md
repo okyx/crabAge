@@ -105,7 +105,8 @@ dilihat dari rumus diatas jika nilai ypred mendekati ytrue maka nilai akan mende
 ![alt text](MAE.PNG)
 
 
-Berdasarkan gambar diatas dapat dilihat bahwa nilai error rata-rata terkecil berada pada algoritma SVR sehingga untuk problem statement ke 2 dapat dipenuhi dengan algoritma SVR  
+Berdasarkan gambar diatas dapat dilihat bahwa nilai error rata-rata terkecil berada pada algoritma SVR sehingga untuk problem statement ke 2 dapat dipenuhi dengan algoritma SVR yaitu membuat model ML seakurat mungkin 
+
 berikut hasil prediksi 1 data test<br>
 ![alt text](prediksi.PNG)
 
