@@ -83,17 +83,17 @@ train_data,test_data,train_target,test_target = train_test_split(X,Y,test_size=0
 
 scaler = StandardScaler()
 
+scaler.fit(np.array(train_data['fitur reduksi']).reshape(-1,1))
 
+train_data['fitur reduksi'] = scaler.transform(np.array(train_data['fitur reduksi']).reshape(-1,1))
 
-train_data['fitur reduksi'] = scaler.fit_transform(np.array(train_data['fitur reduksi']).reshape(-1,1))
-
-test_data['fitur reduksi'] = scaler.fit_transform(np.array(test_data['fitur reduksi']).reshape(-1,1))
+test_data['fitur reduksi'] = scaler.transform(np.array(test_data['fitur reduksi']).reshape(-1,1))
 
 train_data.head()
 
 test_data.head()
 
-"""modelling"""
+"""Modeling"""
 
 knn = KNeighborsRegressor()
 knn.fit(train_data, train_target)
@@ -107,7 +107,7 @@ svr = SVR()
 svr.fit(train_data, train_target)
 y_pred_svr = svr.predict(test_data)
 
-"""evaluation"""
+"""Evaluation"""
 
 mae = pd.DataFrame(columns=['train', 'test'], index=['KNN','linear','SVR'])
  
@@ -117,6 +117,7 @@ model_dict = {'KNN': knn, 'linear': reg, 'SVR': svr}
 for name, model in model_dict.items():
     mae.loc[name, 'train'] = mean_absolute_error(y_true=train_target, y_pred=model.predict(train_data))
     mae.loc[name, 'test'] = mean_absolute_error(y_true=test_target, y_pred=model.predict(test_data))
+    mae.loc[name,'rata-rata'] = (mae.loc[name, 'train'] + mae.loc[name, 'test'])/2
  
 # Panggil mse
 mae

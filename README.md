@@ -98,7 +98,7 @@ Berdasarkan dari pemakaian 3 algoritma ditemukan bahwa SVR menghasilkan nilai MA
 Metric evaluasi yang digunakan adalah MAE atau mean absolute error
 adapun rumus MAE sebagai berikut <br>
 
-![alt text](persamaan.PNG)<br>
+![alt text](persamaan.png)<br>
 
 
 dilihat dari rumus diatas jika nilai ypred mendekati ytrue maka nilai akan mendekati 0 (semakin kecil maka semakin baik)<br>
