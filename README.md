@@ -47,11 +47,11 @@ pada sex terdapat 3 jenis kelamin yaitu m untuk male , f utk femail dan i untuk 
 ![alt text](distribusiSex.PNG) 
 
 pada data numerical terlihat bahwa umur paling banyak terdapat di umur 9 bulan,lalu berdistribusi normal<br>
-![alt text](distribusiNumerical.PNG) 
+![alt text](distribusiNumerical.png) 
 
 pada pairplot dan heatmap juga terlihat jelas bahwa data cenderung berkorelasi antar 1 sama lain sehingga akan terjadi multicollinearity , dan tidak bisa hanya dihapus karna hampir semua data berkorelasi sehingga diperlukan teknik pereduksian seperti PCA, karna tidak ada teknik untuk memilih fitur mana yang akan di pertahankan dilihat dari masing masing fitur yang saling berkorelasi<br>
-![alt text](pairplot.PNG) <br>
-![alt text](heatmap.PNG) 
+![alt text](pairplot.png) <br>
+![alt text](heatmap.png) 
 
 ## Data Preparation
 pada pertama mengubah data kategori menjadi angka dikarenakan algo ML pada dasarnya hanya menerima data berupa angka bukan teks, pada tahap ini digunakan teknil one hot encoding, lalu parameter digunakan adalah kolom yang ingin di ubah , lalu prefix dan pada kasus ini saya juga menggunakan drop_first untuk menghindari multicollinearity sehingga jika kolom yang dihasilkan 2 dari 3 , SEX_F pada kasus ini di drop karna jika SEX_I dan SEX_M sama 0 maka dapat dipastikan bahwa sex kepiting tersebut female<br>
