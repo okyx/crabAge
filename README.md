@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Zicola VLadimir
+# Laporan Proyek Machine Learning - Zicola Vladimir
 
 ## Domain Proyek
 Untuk meningkatkan keuntungan dan mereduksi biaya pengeluaran maka penati kepiting wajib mengetahui kapan suatu kepiting harus dipanen, diluar dari ukuran tubuh kepiting itu sendiri. Jika tubuh kepiting masih kecil tetapi usianya sudah cukup maka kepiting tersebut tetap akan dipanen untuk mereduksi biaya pembesaran.
@@ -18,7 +18,7 @@ Untuk menjawab rumusan masalah diatas, maka perlu dibuatkan sistem prediksi deng
 1. Mengetahui fitur yang paling berpengaruh terhadap umur kepiting
 2. Membuat model ML yang akan memprediksi umur kepiting
 
-### Solution
+### Solution Statement
 Untuk menyelesaikan masalah tersebut demi mencapai hasil yang diinginkan maka digunakan 3 algoritma. Pertama dimulai dari algortima sederhana yaitu linear regression, kedua menggunakan algoritma KNN, serta  yang terakhir algoritma SVR, lalu diukur dengan metric MAE.
 
 ## Data Understanding
@@ -39,30 +39,30 @@ Data ini berisi  3893 baris dengan 9 kolom dimana 8 kolom sebagai fitur dan 1 ko
 Selanjutnya dilakukak dataKepiting.info() untuk mengetahui apakah ada data yang null pada dataset kepiting tersebut dan pada hasil terlihat bahwa tidak ada data yang kosong
 
 selanjutnya dilakukan describe untuk mengetahui nilai min pada dataset, apakah ada nilai fake null yaitu nilai yang tidak secara eksplisit null tetapi nilai tersebut 0.<br>
-![alt text](describe1.PNG)
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/describe1.PNG)
 setelah dilakukan terlihat bahwa nilai ada nilai yang valuenya 0 sebanyak 2 baris<br>
-![alt text](height0.PNG)
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/height0.PNG)
 
 
 Selanjutnya akan di drop kedua data tersebut
 
 Pada sex terdapat 3 jenis kelamin yaitu M untuk male , F utk female dan I untuk indeterminate atau tidak tentu dan distribusi data untuk ke 3 jenis kelamin seimbang<br>
-![alt text](distribusiSex.PNG) 
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/distribusiSex.PNG) 
 
 Pada data numerical terlihat bahwa umur paling banyak terdapat di umur 9 bulan, serta berdistribusi normal<br>
-![alt text](distribusiNumerical.png) 
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/distribusiNumerical.png) 
 
 Pada pairplot dan heatmap juga terlihat jelas bahwa data cenderung berkorelasi antar 1 sama lain sehingga akan terjadi multicollinearity , dan tidak bisa hanya dihapus karna hampir semua data berkorelasi sehingga diperlukan teknik pereduksian seperti PCA, karna tidak ada teknik untuk memilih fitur mana yang akan di pertahankan dilihat dari masing masing fitur yang saling berkorelasi<br>
-![alt text](pairplot.png)
-![alt text](heatmap.png) 
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/pairplot.png)
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/heatmap.png) 
 
 ## Data Preparation
 Tahap 1 One Hot Encoding: mengubah kolom kategori menjadi numerik. Prefix dan pada kasus ini adalah sex lalu juga menggunakan drop_first untuk menghindari multicollinearity sehingga kolom yang dihasilkan hanya 2 ,misal SEX_F pada kasus ini di drop karna jika SEX_I dan SEX_M sama 0 maka dapat dipastikan bahwa sex kepiting tersebut female<br>
-![alt text](sexKepiting.PNG) 
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/sexKepiting.PNG) 
 
 
-Tahap 2reduksi PCA, untuk mereduksi data tersebut serta menghilangkan kolom kolom yang berkorelasi sehingga tidak ada multicollinearity di data tersebut. Adapun sum of explained ratio yang saya pakai adalah minimal 90%.<br>
-![alt text](pca.png)
+Tahap 2 reduksi PCA, untuk mereduksi data tersebut serta menghilangkan kolom kolom yang berkorelasi sehingga tidak ada multicollinearity di data tersebut. Adapun sum of explained ratio yang saya pakai adalah minimal 90%.<br>
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/pca.png)
 
 
 Pada grafik diatas terlihat benar bahwa hanya 1 pca yang diperlukan karena memang pada dasarnya semua kolom saling berkorelasi kuat. yang artinya pada dasarnya semua fitur tersebut sama pentingnya untuk menentukan age dan saling berkorelasi sehingga hanya diambil 1 pca saja.
@@ -70,7 +70,7 @@ Pada grafik diatas terlihat benar bahwa hanya 1 pca yang diperlukan karena meman
 Tahap 3 train test split menjadi data train dan data uji dengan persentase 0.9 dan 0.1 
 
 Tahap 4 standarisasi pada masing masing subset data agar data test tidak menangkap distribusi dari data train sehingga data test akan benar benar independent terhadap data train<br>
-![alt text](scaler.PNG)
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/scaler.PNG)
 
 
 
@@ -86,27 +86,45 @@ Algoritma ketiga yakni SVR yang merupakan salah satu algoritma kompleks yang bai
 
 Pada percobaan ini digunakan semua parameter default dari library sklearn.
 
-Berdasarkan dari pemakaian 3 algoritma ditemukan bahwa SVR menghasilkan nilai MAE terkecil yang artinya menjadi algortima terbaik pada percobaan ini, ditunjukan pada gambar dibawah
+Berdasarkan dari pemakaian 3 algoritma ditemukan bahwa SVR menghasilkan nilai MAE terkecil yang artinya menjadi algortima terbaik pada percobaan ini, ditunjukan pada gambar dibawah<br>
 
 
-![alt text](MAE.PNG)
+
+
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/MAE.PNG)
 
 
 
 
 ## Evaluation
 Metric evaluasi yang digunakan adalah MAE atau mean absolute error
-adapun rumus MAE sebagai berikut <br>
-
-![alt text](persamaan.png)<br>
+adapun rumus MAE sebagai berikut<br>
 
 
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/persamaan.PNG)<br>
 dilihat dari rumus diatas jika nilai ypred mendekati ytrue maka nilai akan mendekati 0 (semakin kecil maka semakin baik)<br>
-![alt text](MAE.PNG)
+
+<br>
+<br>
+
+
+
+berdasarkan persamaan berikut contoh perhitungan MAE, jika ada 3 data dengan ytrue 10, 11, 12 dan ypred sebesar 10.2, 10.9, 12.6 maka nilai MAE dapat dituliskan sebagai berikut<br>
+
+
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/penyelesaian.PNG)
+<br>
+dari contoh diatas jika nilai ypred dan ytrue sama persis maka nilai MAE akan 0, maka semakin kecil nilai MAE semakin baik algoritma tersebut dalam memprediksi
+<br>
+<br>
+
+
+Berikut hasil MAE pada ketiga algoritma<br>
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/MAE.PNG)
 
 
 Berdasarkan gambar diatas dapat dilihat bahwa nilai error rata-rata terkecil berada pada algoritma SVR sehingga untuk problem statement ke 2 dapat dipenuhi dengan algoritma SVR yaitu membuat model ML seakurat mungkin 
-
-berikut hasil prediksi 1 data test<br>
-![alt text](prediksi.PNG)
+<br><br>
+berikut hasil prediksi 1 sample data test dengan ketiga algoritma<br>
+![alt text](https://raw.githubusercontent.com/okyx/crabAge/main/prediksi.PNG)
 
